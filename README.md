@@ -38,3 +38,9 @@ Fitur Utama (Fungsionalitas CRUD):
 7. Re-Triage: Jika keluhan pasien diperbarui, sistem akan menghitung ulang tingkat urgensi dan mengatur ulang posisi antrian jika diperlukan.
 
 8. Delete (Manajemen Selesai): Menghapus data pasien dari daftar aktif jika pasien sudah dinyatakan sembuh, dirujuk ke ruang rawat inap, atau keluar dari rumah sakit.
+
+## Flowchart
+![Flowchart](docs/flowchart_uas_alpro.png)
+
+## Pseudocode
+![Pseudocode](docs/pseudocode.txt)
