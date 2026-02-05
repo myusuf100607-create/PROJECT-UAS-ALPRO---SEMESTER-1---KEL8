@@ -43,4 +43,111 @@ Fitur Utama (Fungsionalitas CRUD):
 ![Flowchart](docs/flowchart_uas_alpro.png)
 
 ## Pseudocode
-![Pseudocode](docs/pseudocode.txt)
+```ALGORITMA Sistem_IGD_Darurat
+
+DEKLARASI:
+    antrian_igd: ARRAY OF DICTIONARY
+    pilihan, kat_pilih, aksi: STRING
+    nama, nik, no_bpjs, pj, kontak, keluhan, kategori, ket_awal: STRING
+    skor, no: INTEGER
+    is_kritis: BOOLEAN
+    kata_kunci: ARRAY OF STRING = ["stroke", "jantung", "sesak", "pendarahan", "kecelakaan", "tidak sadar", "kejang"]
+
+PROSEDUR info()
+    TAMPILKAN Menu (1-6)
+END PROSEDUR
+
+PROSEDUR tampilkan_tabel(data_list)
+    JIKA data_list KOSONG:
+        TAMPILKAN "ANTRIAN KOSONG"
+    SELAIN ITU:
+        TAMPILKAN Header Tabel
+        UNTUK SETIAP p DALAM data_list:
+            JIKA p.skor == 1: status = "KRITIS"
+            SELAIN ITU: status = "TIDAK GAWAT"
+            TAMPILKAN data pasien p
+        ENDFOR
+    ENDIF
+END PROSEDUR
+
+BEGIN (Program Utama)
+    LOOP SELAMANYA:
+        PANGGIL info()
+        INPUT pilihan
+
+        JIKA pilihan == '1': (Registrasi Pasien)
+            INPUT nama, nik
+            INPUT kat_pilih (1 untuk BPJS, 2 untuk Umum)
+            
+            JIKA kat_pilih == '1':
+                kategori = "BPJS"
+                INPUT no_bpjs
+            SELAIN ITU:
+                kategori = "Umum"
+                no_bpjs = "-"
+            ENDIF
+
+            INPUT pj, kontak, keluhan
+            
+            # Logika Auto-Triage
+            is_kritis = FALSE
+            UNTUK SETIAP k DALAM kata_kunci:
+                JIKA k TERDAPAT DALAM keluhan:
+                    is_kritis = TRUE
+                ENDIF
+            ENDFOR
+
+            JIKA is_kritis == TRUE:
+                skor = 1
+                ket_awal = "DITANGANI"
+            SELAIN ITU:
+                skor = 2
+                ket_awal = "Menunggu"
+            ENDIF
+
+            TAMBAHKAN data pasien ke antrian_igd
+            URUTKAN antrian_igd BERDASARKAN skor (ASCENDING)
+            TAMPILKAN "SUKSES"
+
+        SELAIN JIKA pilihan == '2': (Lihat Daftar)
+            PANGGIL tampilkan_tabel(antrian_igd)
+
+        SELAIN JIKA pilihan == '3': (Cari Pasien)
+            INPUT cari
+            hasil = FILTER antrian_igd DIMANA cari ADA DI nama, nik, ATAU no_bpjs
+            PANGGIL tampilkan_tabel(hasil)
+
+        SELAIN JIKA pilihan == '4': (Update Pasien)
+            PANGGIL tampilkan_tabel(antrian_igd)
+            JIKA antrian_igd TIDAK KOSONG:
+                INPUT no
+                INPUT aksi (1 untuk Ket, 2 untuk Keluhan)
+                
+                JIKA aksi == '1':
+                    INPUT keterangan_baru
+                    UPDATE antrian_igd[no].keterangan
+                SELAIN JIKA aksi == '2':
+                    INPUT keluhan_baru
+                    UPDATE antrian_igd[no].keluhan
+                    # Re-Triage
+                    HITUNG ULANG skor berdasarkan kata_kunci
+                    URUTKAN antrian_igd BERDASARKAN skor
+                ENDIF
+            ENDIF
+
+        SELAIN JIKA pilihan == '5': (Selesai/Hapus)
+            PANGGIL tampilkan_tabel(antrian_igd)
+            JIKA antrian_igd TIDAK KOSONG:
+                INPUT no
+                HAPUS antrian_igd[no]
+                TAMPILKAN "SUKSES"
+            ENDIF
+
+        SELAIN JIKA pilihan == '6': (Keluar)
+            KELUAR LOOP
+            
+        SELAIN ITU:
+            TAMPILKAN "Pilihan tidak valid"
+        ENDIF
+    ENDLOOP
+END
