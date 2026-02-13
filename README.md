@@ -1,13 +1,13 @@
-## JUDUL PROJECT : MANAGEMENT IGD RUMAH SAKIT
+## 🚀JUDUL PROJECT : MANAGEMENT IGD RUMAH SAKIT
 **KELOMPOK 8 :**
 
-Muhamad Yusuf
-Muhamad Rivaldi Aropiq
-Muhammad Ikbar Rifa
-Elza Olgi Aulia
+1. Muhamad Yusuf
+2. Muhamad Rivaldi Aropiq
+3. Muhammad Ikbar Rifa
+4. Elza Olgi Aulia
 
 
-**STUDI KASUS**
+### 🔎 STUDI KASUS
 
 Sistem antrian IGD ini digunakan untuk mengatur urutan pelayanan pasien berdasarkan tingkat kegawatdaruratan (Triage), bukan sekadar waktu kedatangan.
 
@@ -17,7 +17,7 @@ Sistem ini menyimpan data pasien ke dalam daftar antrian digital yang dapat dica
 
 
 
-## Deskripsi
+## 📖 Deskripsi
 Pelayanan di Instalasi Gawat Darurat (IGD) menuntut penanganan pasien yang cepat, tepat, dan terorganisir dengan baik. Dalam kondisi darurat, banyaknya pasien yang datang secara bersamaan sering menyebabkan antrian tidak teratur, keterlambatan penanganan, serta risiko kesalahan dalam menentukan prioritas pasien. Jika proses pencatatan dan pengelolaan data pasien masih dilakukan secara manual, petugas IGD dapat mengalami kesulitan dalam memantau kondisi pasien, mencari data pasien tertentu, maupun memperbarui status penanganan pasien.
 
 Selain itu, penentuan tingkat kegawatan pasien sering bergantung pada penilaian awal petugas, yang berpotensi tidak konsisten apabila tidak didukung oleh sistem yang terstruktur. Hal ini dapat menyebabkan pasien dengan kondisi kritis tidak segera mendapatkan penanganan yang seharusnya. Oleh karena itu, dibutuhkan sebuah sistem sederhana yang mampu membantu proses registrasi pasien, penentuan prioritas triage, pengelolaan antrian, serta pembaruan data pasien secara cepat dan teratur. Sistem ini diharapkan dapat meminimalkan kesalahan, meningkatkan efisiensi pelayanan IGD, dan membantu petugas dalam mengambil keputusan awal secara lebih sistematis.
@@ -39,10 +39,19 @@ Fitur Utama (Fungsionalitas CRUD):
 
 8. Delete (Manajemen Selesai): Menghapus data pasien dari daftar aktif jika pasien sudah dinyatakan sembuh, dirujuk ke ruang rawat inap, atau keluar dari rumah sakit.
 
-## Flowchart
+### 📸 Screenshot Output
+
+![Screenshot output](docs/menu_utama_igd.png)
+![Screenshot output](docs/tabel_output.png)
+
+
+
+### 🧩 Logika & Algoritma
+
+#### 1. Flowchart
 ![Flowchart](docs/flowchart_uas_alpro.png)
 
-## Pseudocode
+#### 2. Pseudocode
 ```ALGORITMA Sistem_IGD_Darurat
 
 DEKLARASI:
